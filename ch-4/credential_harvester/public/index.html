@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!-- saved from url=(0017)http://127.0.0.1/ -->
+<html lang="en" class=" js chrome webkit"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Roundcube Webmail :: Welcome to Roundcube Webmail</title>
+<meta name="Robots" content="noindex,nofollow">
+<meta name="viewport" content="" id="viewport">
+<link rel="shortcut icon" href="http://127.0.0.1/skins/larry/images/favicon.ico">
+<link rel="stylesheet" type="text/css" href="./index_files/styles.css">
+<!--[if IE 9]><link rel="stylesheet" type="text/css" href="skins/larry/svggradients.css?s=1484602228" /><![endif]-->
+<link rel="stylesheet" type="text/css" href="./index_files/jquery-ui-1.10.4.custom.css">
+<script type="text/javascript" src="./index_files/ui.js"></script>
+
+
+
+
+<script src="./index_files/jquery.min.js" type="text/javascript"></script>
+<script src="./index_files/common.js" type="text/javascript"></script>
+<script src="./index_files/app.js" type="text/javascript"></script>
+<script src="./index_files/jstz.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+/*
+        @licstart  The following is the entire license notice for the 
+        JavaScript code in this page.
+
+        Copyright (C) 2005-2014 The Roundcube Dev Team
+
+        The JavaScript code in this page is free software: you can redistribute
+        it and/or modify it under the terms of the GNU General Public License
+        as published by the Free Software Foundation, either version 3 of
+        the License, or (at your option) any later version.
+
+        The code is distributed WITHOUT ANY WARRANTY; without even the implied
+        warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+        See the GNU GPL for more details.
+
+        @licend  The above is the entire license notice
+        for the JavaScript code in this page.
+*/
+var rcmail = new rcube_webmail();
+rcmail.set_env({"task":"login","x_frame_options":"sameorigin","standard_windows":false,"locale":"en_US","cookie_domain":"","cookie_path":"\/","cookie_secure":false,"skin":"larry","refresh_interval":60,"session_lifetime":600,"action":"","comm_path":".\/?_task=login","compose_extwin":false,"date_format":"yy-mm-dd","request_token":"PTHnYgUOlKX3i8m5V9V1Gmc3SZRBjPLC"});
+rcmail.add_label({"loading":"Loading...","servererror":"Server Error!","connerror":"Connection Error (Failed to reach the server)!","requesttimedout":"Request timed out","refreshing":"Refreshing...","windowopenerror":"The popup window was blocked!","uploadingmany":"Uploading files...","errortitle":"An error occurred!","toggleadvancedoptions":"Toggle advanced options"});
+rcmail.gui_container("loginfooter","bottomline");
+rcmail.gui_object('loginform', 'form');
+rcmail.gui_object('message', 'message');
+</script>
+
+<script type="text/javascript" src="./index_files/jquery-ui-1.10.4.custom.min.js"></script>
+</head>
+<body>
+
+<h1 class="voice">Roundcube Webmail Login</h1>
+
+<div id="login-form">
+<div class="box-inner" role="main">
+<img src="./index_files/roundcube_logo.png" id="logo" alt="Roundcube Webmail">
+
+<form name="form" method="post" action="http://127.0.0.1/?_task=login">
+<input type="hidden" name="_token" value="PTHnYgUOlKX3i8m5V9V1Gmc3SZRBjPLC">
+<input type="hidden" name="_task" value="login"><input type="hidden" name="_action" value="login"><input type="hidden" name="_timezone" id="rcmlogintz" value="America/Los_Angeles"><input type="hidden" name="_url" id="rcmloginurl" value=""><table><tbody><tr><td class="title"><label for="rcmloginuser">Username</label>
+</td>
+<td class="input"><input name="_user" id="rcmloginuser" required="required" size="40" autocapitalize="off" autocomplete="off" type="text"></td>
+</tr>
+<tr><td class="title"><label for="rcmloginpwd">Password</label>
+</td>
+<td class="input"><input name="_pass" id="rcmloginpwd" required="required" size="40" autocapitalize="off" autocomplete="off" type="password"></td>
+</tr>
+</tbody>
+</table>
+<p class="formbuttons"><input type="submit" id="rcmloginsubmit" class="button mainaction" value="Login"></p>
+
+</form>
+
+</div>
+
+<div class="box-bottom" role="complementary">
+	<div id="message"></div>
+	<noscript>
+		&lt;p class="noscriptwarning"&gt;Warning: This webmail service requires Javascript! In order to use it please enable Javascript in your browser's settings.&lt;/p&gt;
+	</noscript>
+</div>
+
+<div id="bottomline" role="contentinfo">
+	Roundcube Webmail 
+		
+</div>
+</div>
+
+
+
+<script type="text/javascript">
+if (!window.UI) { var UI = new rcube_mail_ui(); }
+</script>
+
+
+
+
+<script type="text/javascript">
+
+jQuery.extend(jQuery.ui.dialog.prototype.options.position, {
+                using: function(pos) {
+                    var me = jQuery(this),
+                        offset = me.css(pos).offset(),
+                        topOffset = offset.top - 12;
+                    if (topOffset < 0)
+                        me.css('top', pos.top - topOffset);
+                    if (offset.left + me.outerWidth() + 12 > jQuery(window).width())
+                        me.css('left', pos.left - 12);
+                }
+            });
+$(document).ready(function(){ 
+rcmail.init();
+var images = ["skins\/larry\/images\/ajaxloader.gif","skins\/larry\/images\/ajaxloader_dark.gif","skins\/larry\/images\/buttons.png","skins\/larry\/images\/addcontact.png","skins\/larry\/images\/filetypes.png","skins\/larry\/images\/listicons.png","skins\/larry\/images\/messages.png","skins\/larry\/images\/messages_dark.png","skins\/larry\/images\/quota.png","skins\/larry\/images\/selector.png","skins\/larry\/images\/splitter.png","skins\/larry\/images\/watermark.jpg"];
+            for (var i=0; i<images.length; i++) {
+                img = new Image();
+                img.src = images[i];
+            }
+});
+</script>
+
+
+</body></html>
