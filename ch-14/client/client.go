@@ -1,17 +1,17 @@
 package main
 
 import (
-	"google.golang.org/grpc"
-	"log"
-	"bitbucket.org/stacktitan/blackhat-go/ch-14/grpcapi"
 	"context"
 	"fmt"
+	"log"
 	"os"
+
+	"github.com/blackhat-go/bhg/ch-14/grpcapi"
+	"google.golang.org/grpc"
 )
 
 func main() {
-	var
-	(
+	var (
 		opts   []grpc.DialOption
 		conn   *grpc.ClientConn
 		err    error

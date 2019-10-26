@@ -1,12 +1,13 @@
 package main
 
 import (
-	"bitbucket.org/stacktitan/blackhat-go/ch-14/grpcapi"
-	"errors"
 	"context"
-	"net"
+	"errors"
 	"fmt"
 	"log"
+	"net"
+
+	"github.com/blackhat-go/bhg/ch-14/grpcapi"
 	"google.golang.org/grpc"
 )
 
