@@ -1,0 +1,23 @@
+syntax = "proto3";
+package grpcapi;
+
+// Implant defines our C2 API functions
+service Implant {
+    rpc FetchCommand (Empty) returns (Command);
+    rpc SendOutput (Command) returns (Empty);
+}
+
+// Admin defines our Admin API functions
+service Admin {
+    rpc RunCommand (Command) returns (Command);
+}
+
+// Command defines a with both input and output fields
+message Command {
+    string In = 1;
+    string Out = 2;
+}
+
+// Empty defines an empty message used in place of null
+message Empty {
+}
