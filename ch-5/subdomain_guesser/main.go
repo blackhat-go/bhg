@@ -25,7 +25,6 @@ func lookupA(fqdn, serverAddr string) ([]string, error) {
 	for _, answer := range in.Answer {
 		if a, ok := answer.(*dns.A); ok {
 			ips = append(ips, a.A.String())
-			return ips, nil
 		}
 	}
 	return ips, nil
