@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/bhg/ch-3/shodan/shodan"
+	"github.com/blackhat-go/bhg/ch-3/shodan/shodan"
 )
 
 func main() {
