@@ -5,7 +5,7 @@ import (
 
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
-	"github.com/bhg/ch-7/db/dbminer"
+	"github.com/blackhat-go/bhg/ch-7/db/dbminer"
 )
 
 type MongoMiner struct {

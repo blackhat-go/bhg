@@ -12,7 +12,7 @@ import (
 
 	"encoding/hex"
 
-	"github.com/bhg/ch-6/smb/smb/encoder"
+	"github.com/blackhat-go/bhg/ch-6/smb/smb/encoder"
 )
 
 const Signature = "NTLMSSP\x00"
