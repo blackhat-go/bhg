@@ -17,7 +17,7 @@ type badAuth struct {
 func (b *badAuth) ServeHTTP(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
 	username := r.URL.Query().Get("username")
 	password := r.URL.Query().Get("password")
-	if username != b.Username && password != b.Password {
+	if username != b.Username || password != b.Password {
 		http.Error(w, "Unauthorized", 401)
 		return
 	}
