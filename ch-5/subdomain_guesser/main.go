@@ -119,11 +119,6 @@ func main() {
 		go worker(tracker, fqdns, gather, *flServerAddr)
 	}
 
-	for scanner.Scan() {
-		fqdns <- fmt.Sprintf("%s.%s", scanner.Text(), *flDomain)
-	}
-	// Note: We could check scanner.Err() here.
-
 	go func() {
 		for r := range gather {
 			results = append(results, r...)
@@ -131,6 +126,11 @@ func main() {
 		var e empty
 		tracker <- e
 	}()
+
+	for scanner.Scan() {
+		fqdns <- fmt.Sprintf("%s.%s", scanner.Text(), *flDomain)
+	}
+	// Note: We could check scanner.Err() here.
 
 	close(fqdns)
 	for i := 0; i < *flWorkerCount; i++ {
