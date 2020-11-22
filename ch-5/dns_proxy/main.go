@@ -14,13 +14,13 @@ import (
 )
 
 func parse(filename string) (map[string]string, error) {
-	records := make(map[string]string)
 	fh, err := os.Open(filename)
 	if err != nil {
-		return records, err
+		return nil, err
 	}
 	defer fh.Close()
 	scanner := bufio.NewScanner(fh)
+	records := make(map[string]string)
 	for scanner.Scan() {
 		line := scanner.Text()
 		parts := strings.SplitN(line, ",", 2)
@@ -37,13 +37,12 @@ func parse(filename string) (map[string]string, error) {
 }
 
 func main() {
-	var recordLock sync.RWMutex
-
 	records, err := parse("proxy.config")
 	if err != nil {
 		log.Fatalf("Error processing configuration file: %s\n", err.Error())
 	}
 
+	var recordLock sync.RWMutex
 	dns.HandleFunc(".", func(w dns.ResponseWriter, req *dns.Msg) {
 		if len(req.Question) < 1 {
 			dns.HandleFailed(w, req)
@@ -80,14 +79,14 @@ func main() {
 			switch sig {
 			case syscall.SIGUSR1:
 				log.Println("SIGUSR1: reloading records")
-				recordLock.Lock()
 				recordsUpdate, err := parse("proxy.config")
 				if err != nil {
 					log.Printf("Error processing configuration file: %s\n", err.Error())
 				} else {
+					recordLock.Lock()
 					records = recordsUpdate
+					recordLock.Unlock()
 				}
-				recordLock.Unlock()
 			}
 		}
 	}()
