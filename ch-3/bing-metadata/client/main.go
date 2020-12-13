@@ -62,12 +62,18 @@ func main() {
 		domain,
 		filetype,
 		filetype)
+	
 	search := fmt.Sprintf("http://www.bing.com/search?q=%s", url.QueryEscape(q))
-	doc, err := goquery.NewDocument(search)
+	res, err := http.Get(search)
+	if err != nil {
+		return
+	}
+	
+	doc, err := goquery.NewDocumentFromReader(res.Body)
 	if err != nil {
 		log.Panicln(err)
 	}
-
-	s := "html body div#b_content ol#b_results li.b_algo div.b_title h2"
+	defer res.Body.Close()
+	s := "html body div#b_content ol#b_results li.b_algo h2"
 	doc.Find(s).Each(handler)
 }
