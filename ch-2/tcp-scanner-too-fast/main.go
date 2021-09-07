@@ -3,10 +3,12 @@ package main
 import (
 	"fmt"
 	"net"
+	"time"
 )
 
 func main() {
 	for i := 1; i <= 1024; i++ {
+		time.Sleep(100 * time.Millisecond)
 		go func(j int) {
 			address := fmt.Sprintf("scanme.nmap.org:%d", j)
 			conn, err := net.Dial("tcp", address)
@@ -14,7 +16,7 @@ func main() {
 				return
 			}
 			conn.Close()
-			fmt.Printf("%d open\n", j)
+			fmt.Println("[+]Port -> ", j)
 		}(i)
 	}
 }
