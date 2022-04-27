@@ -15,14 +15,16 @@ func echo(conn net.Conn) {
 	for {
 		// Receive data via conn.Read into a buffer.
 		size, err := conn.Read(b[0:])
-		if err == io.EOF {
-			log.Println("Client disconnected")
-			break
-		}
-		if err != nil {
+		if err != nil && err != io.EOF {
 			log.Println("Unexpected error")
 			break
 		}
+
+		if err == io.EOF && size == 0 {
+			log.Println("Client disconnected")
+			break
+		}
+
 		log.Printf("Received %d bytes: %s", size, string(b))
 
 		// Send data via conn.Write.
