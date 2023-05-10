@@ -13,7 +13,11 @@ func main() {
 			// port is closed or filtered.
 			continue
 		}
-		conn.Close()
+		err = conn.Close()
+		if err != nil {
+			fmt.Printf("%d open\n", i)
+			return
+		}
 		fmt.Printf("%d open\n", i)
 	}
 }

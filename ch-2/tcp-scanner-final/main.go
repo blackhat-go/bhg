@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net"
 	"sort"
 )
@@ -14,15 +15,21 @@ func worker(ports, results chan int) {
 			results <- 0
 			continue
 		}
-		conn.Close()
+
+		// Close politely
+		err = conn.Close()
+		if err != nil {
+			log.Fatalln(err)
+			return
+		}
 		results <- p
 	}
 }
 
 func main() {
-	ports := make(chan int, 100)
+	ports := make(chan int, 65535)
 	results := make(chan int)
-	var openports []int
+	var openPorts []int
 
 	for i := 0; i < cap(ports); i++ {
 		go worker(ports, results)
@@ -37,14 +44,14 @@ func main() {
 	for i := 0; i < 1024; i++ {
 		port := <-results
 		if port != 0 {
-			openports = append(openports, port)
+			openPorts = append(openPorts, port)
 		}
 	}
 
 	close(ports)
 	close(results)
-	sort.Ints(openports)
-	for _, port := range openports {
+	sort.Ints(openPorts)
+	for _, port := range openPorts {
 		fmt.Printf("%d open\n", port)
 	}
 }

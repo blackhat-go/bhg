@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-//PreProcessImage reads to buffer from file handle
+// PreProcessImage reads to buffer from file handle
 func PreProcessImage(dat *os.File) (*bytes.Reader, error) {
 	stats, err := dat.Stat()
 	if err != nil {

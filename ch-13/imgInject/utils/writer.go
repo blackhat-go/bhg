@@ -11,7 +11,7 @@ import (
 	"github.com/blackhat-go/bhg/ch-13/imgInject/models"
 )
 
-//WriteData writes new data to offset
+// WriteData writes new data to offset
 func WriteData(r *bytes.Reader, c *models.CmdLineOpts, b []byte) {
 	offset, err := strconv.ParseInt(c.Offset, 10, 64)
 	if err != nil {

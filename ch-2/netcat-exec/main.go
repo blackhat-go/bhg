@@ -20,9 +20,24 @@ func handle(conn net.Conn) {
 	// Set stdin to our connection
 	cmd.Stdin = conn
 	cmd.Stdout = wp
-	go io.Copy(conn, rp)
-	cmd.Run()
-	conn.Close()
+	go func() {
+		_, err := io.Copy(conn, rp)
+		if err != nil {
+			log.Fatalln(err)
+		}
+	}()
+
+	err := cmd.Run()
+	if err != nil {
+		log.Fatalln(err)
+		return
+	}
+
+	err = conn.Close()
+	if err != nil {
+		log.Fatalln(err)
+		return
+	}
 }
 
 func main() {

@@ -8,12 +8,12 @@ func encodeDecode(input []byte, key string) []byte {
 	return bArr
 }
 
-//XorEncode returns encoded byte array
+// XorEncode returns encoded byte array
 func XorEncode(decode []byte, key string) []byte {
 	return encodeDecode(decode, key)
 }
 
-//XorDecode returns decoded byte array
+// XorDecode returns decoded byte array
 func XorDecode(encode []byte, key string) []byte {
 	return encodeDecode(encode, key)
 }

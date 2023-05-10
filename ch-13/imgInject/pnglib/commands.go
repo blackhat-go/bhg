@@ -18,12 +18,12 @@ const (
 	endChunkType = "IEND"
 )
 
-//Header holds the first byte (aka magic byte)
+// Header holds the first byte (aka magic byte)
 type Header struct {
 	Header uint64 //  0:8
 }
 
-//Chunk represents a data byte chunk
+// Chunk represents a data byte chunk
 type Chunk struct {
 	Size uint32
 	Type uint32
@@ -31,13 +31,13 @@ type Chunk struct {
 	CRC  uint32
 }
 
-//MetaChunk inherits a Chunk struct
+// MetaChunk inherits a Chunk struct
 type MetaChunk struct {
 	Chk    Chunk
 	Offset int64
 }
 
-//ProcessImage is the wrapper to parse PNG bytes
+// ProcessImage is the wrapper to parse PNG bytes
 func (mc *MetaChunk) ProcessImage(b *bytes.Reader, c *models.CmdLineOpts) {
 	mc.validate(b)
 	if (c.Offset != "") && (c.Encode == false && c.Decode == false) {

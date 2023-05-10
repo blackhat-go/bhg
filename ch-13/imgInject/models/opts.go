@@ -1,6 +1,6 @@
 package models
 
-//CmdLineOpts represents the cli arguments
+// CmdLineOpts represents the cli arguments
 type CmdLineOpts struct {
 	Input    string
 	Output   string
